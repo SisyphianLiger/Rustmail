@@ -1,0 +1,26 @@
+[package]
+name = "newsletter"
+version = "0.1.0"
+edition = "2021"
+
+
+# lib reference for testing
+[lib]
+path = "src/lib.rs"
+
+
+[[bin]]
+path = "src/main.rs"
+name = "newsletter"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# See Testing Section for functionaility
+[dev-dependencies]
+reqwest = "0.11"
+
+
+# Developer dependencies that give us a working back-end
+[dependencies]
+ actix-web = "4"
+ tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+ serde = { version = "1", features = ["derive"]} 
