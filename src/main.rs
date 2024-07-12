@@ -1,6 +1,8 @@
+use std::net::TcpListener;
+
 use zero2prod::run;
 
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
-    run()?.await
+    run(TcpListener::bind("127.0.0.1:0").expect("Cannot Bing to Port Specified, try again"))?.await
 }
