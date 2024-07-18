@@ -1,7 +1,6 @@
 use std::net::TcpListener;
 
-use zero2prod::run;
-
+use zero2prod::configuration::run;
 #[tokio::test]
 async fn health_check_works() {
     // Now spawn_app outputs the address
@@ -47,7 +46,7 @@ async fn subscribe_returns_a_200_for_valid_form_data() {
     // Act
     let body = "name=le%20guin&email=ursula_le_guin%40gmail.com";
     let response = client
-        .post(&format!("{}/subscribe", &app_address))
+        .post(&format!("{}/subscriptions", &app_address))
         .header("Content-Type", "application/x-www-form-urlencoded")
         .body(body)
         .send()
@@ -71,8 +70,9 @@ async fn subscribe_with_incorrect_data_returns_400() {
 
     for (invalid_body, error_message) in test_cases {
         // Make a Response
+        println!("The Invalid Body is {}", &invalid_body);
         let response = client
-            .post(&format!("{}/subscribe", &app_address))
+            .post(&format!("{}/subscriptions", &app_address))
             .header("Content-Type", "application/x-www-form-urlencoded")
             .body(invalid_body)
             .send()
