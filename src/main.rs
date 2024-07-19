@@ -8,6 +8,7 @@ use zero2prod::configuration::get_configuration;
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
     // Panic if we can't read config
+    println!("Let's Start the Server!");
     let configuration = get_configuration().expect("Failed to read configuration");
     // We have removed the hard-coded val it's from settings
     
