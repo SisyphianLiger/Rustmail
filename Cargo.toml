@@ -10,6 +10,18 @@ tokio-macros = "2.2"
 serde = { version = "1", features = ["derive"] }
 log = "0.4.22"
 
+
+[dependencies.sqlx]
+version = "0.6"
+default-features = false
+features = [
+    "runtime-tokio-rustls",
+    "macros",
+    "postgres",
+    "uuid",
+    "chrono",
+]
+
 [lib]
 path = "src/lib.rs"
 

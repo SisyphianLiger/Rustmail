@@ -1,6 +1,7 @@
 use std::net::TcpListener;
 
-use zero2prod::configuration::run;
+use zero2prod::startup::run;
+
 #[tokio::test]
 async fn health_check_works() {
     // Now spawn_app outputs the address
